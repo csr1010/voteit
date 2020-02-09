@@ -32,8 +32,9 @@ async function vote() {
   browser.close();
 }
 
-vote();
-
+(async function () {
+  await vote();
+});
 // const cronJob = schedule("*/30 * * * *", async () => {
 //   try {
 //     vote();
