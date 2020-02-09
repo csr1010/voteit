@@ -1,14 +1,16 @@
 {
-  "name": "puppeteer-sample",
+  "name": "vote-baby",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.x"
+  },
   "scripts": {
-    "simulate-headless": "HEADLESS=true node ./dist/bundle.js",
-    "simulate": "HEADLESS=false node ./dist/bundle.js",
+    "start": "node ./dist/bundle.js",
     "build": "rollup --config || exit 0",
     "eslint": "eslint '**/*.js' || exit 0",
-    "test-headless": "concurrently \"npm run build\" \"npm run simulate-headless\"",
-    "test": "concurrently \"npm run eslint\" \"npm run build\" \"npm run simulate\""
+    "test": "concurrently \"npm run build\" \"npm run start\""
   },
   "author": "MOAT",
   "license": "ISC",
