@@ -32,11 +32,13 @@ async function vote() {
   browser.close();
 }
 
-const cronJob = schedule("*/30 * * * *", async () => {
-  try {
-    vote();
-  } catch (error) {
-    cronJob.stop();
-    cronJob.destroy();
-  }
-});
+vote();
+
+// const cronJob = schedule("*/30 * * * *", async () => {
+//   try {
+//     vote();
+//   } catch (error) {
+//     cronJob.stop();
+//     cronJob.destroy();
+//   }
+// });
