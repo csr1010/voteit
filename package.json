@@ -7,7 +7,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "node ./dist/bundle.js",
+    "start": "NODE_MODULES_CACHE=false NODE_VERBOSE=true node ./dist/bundle.js",
     "build": "rollup --config || exit 0",
     "eslint": "eslint '**/*.js' || exit 0",
     "test": "concurrently \"npm run build\" \"npm run start\""
