@@ -1,0 +1,26 @@
+{
+  "name": "puppeteer-sample",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "simulate-headless": "HEADLESS=true node ./dist/bundle.js",
+    "simulate": "HEADLESS=false node ./dist/bundle.js",
+    "build": "rollup --config || exit 0",
+    "eslint": "eslint '**/*.js' || exit 0",
+    "test-headless": "concurrently \"npm run build\" \"npm run simulate-headless\"",
+    "test": "concurrently \"npm run eslint\" \"npm run build\" \"npm run simulate\""
+  },
+  "author": "MOAT",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.20.0",
+    "unique-names-generator": "^4.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-multi-entry": "^3.0.0",
+    "concurrently": "^5.0.2",
+    "eslint": "^6.8.0",
+    "node-cron": "^2.0.3",
+    "rollup": "^1.29.0"
+  }
+}
