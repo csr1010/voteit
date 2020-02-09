@@ -7,5 +7,5 @@ export default {
         file: "./dist/bundle.js"
     },
     plugins: [multi()],
-    external: ["fs", "unique-names-generator", "puppeteer", "node-cron"]
+    external: ["fs", "unique-names-generator", "puppeteer"]
 };

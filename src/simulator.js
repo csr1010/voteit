@@ -1,6 +1,5 @@
 import { launchPuppeeteer, delay } from "../util/util";
 import { uniqueNamesGenerator, names, starWars } from "unique-names-generator";
-import { schedule } from "node-cron";
 
 async function vote() {
   const browser = await launchPuppeeteer();
