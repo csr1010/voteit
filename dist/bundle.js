@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var puppeteer = _interopDefault(require('puppeteer'));
 var uniqueNamesGenerator = require('unique-names-generator');
-var nodeCron = require('node-cron');
+// var nodeCron = require('node-cron');
 
 const puppeteer_launch = {
     headless: true,
@@ -58,20 +58,32 @@ async function vote() {
   await page.click("a[id=vote_btn]");
   await delay(5000);
   await page.evaluate(() => {
-    const fbBox = document.querySelector("fb-close");
+    const aClose = document.querySelector("button.close");
+    if (aClose) {
+      aClose.click();
+    }
+  });
+  await delay(5000);
+  await page.evaluate(() => {
     if (fbBox) {
       fbBox.click();
     }
+    const fbBox = document.querySelector("fb-close");
   });
+  await page.waitForFunction("document.querySelector('p[id=vote_msg]').innerText.includes('Thank You')");
+  console.log(`Voted Successfully by ${fullName}`);
   await page.screenshot({ path: "./image.jpg", type: "jpeg" });
   browser.close();
 }
 
-const cronJob = nodeCron.schedule("*/30 * * * *", async () => {
-  try {
-    vote();
-  } catch (error) {
-    cronJob.stop();
-    cronJob.destroy();
-  }
+(async function () {
+  await vote();
 });
+// const cronJob = nodeCron.schedule("*/30 * * * *", async () => {
+//   try {
+//     vote();
+//   } catch (error) {
+//     cronJob.stop();
+//     cronJob.destroy();
+//   }
+// });
