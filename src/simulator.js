@@ -1,5 +1,6 @@
 import { launchPuppeeteer, delay } from "../util/util";
 import { uniqueNamesGenerator, names, starWars } from "unique-names-generator";
+// import { schedule } from "node-cron";
 
 async function vote() {
   const browser = await launchPuppeeteer();
@@ -22,11 +23,20 @@ async function vote() {
   await page.click("a[id=vote_btn]");
   await delay(5000);
   await page.evaluate(() => {
-    const fbBox = document.querySelector("fb-close");
+    const aClose = document.querySelector("button.close");
+    if (aClose) {
+      aClose.click();
+    }
+  });
+  await delay(5000);
+  await page.evaluate(() => {
     if (fbBox) {
       fbBox.click();
     }
+    const fbBox = document.querySelector("fb-close");
   });
+  await page.waitForFunction("document.querySelector('p[id=vote_msg]').innerText.includes('Thank You')");
+  console.log(`Voted Successfully by ${fullName}`);
   await page.screenshot({ path: "./image.jpg", type: "jpeg" });
   browser.close();
 }
