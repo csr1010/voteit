@@ -2,17 +2,13 @@
   "name": "vote-baby",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "12.13.0",
-    "npm": "6.x"
-  },
   "scripts": {
     "start": "NODE_MODULES_CACHE=false NODE_VERBOSE=true node ./dist/bundle.js",
     "build": "rollup --config || exit 0",
     "eslint": "eslint '**/*.js' || exit 0",
     "test": "concurrently \"npm run build\" \"npm run start\""
   },
-  "author": "MOAT",
+  "author": "chetan",
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^1.20.0",
