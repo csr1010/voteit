@@ -1,2 +1,4 @@
 node_modules
 dist
+src/*.sh
+image.jpg
